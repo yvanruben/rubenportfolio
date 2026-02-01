@@ -1,0 +1,26 @@
+/* src/styles/custom.css */
+.bckgrd-animation {
+  /* Smooth multi-color gradient */
+  background: linear-gradient(270deg, #03081b, #213272, #0f1a40, #03081b, #010245);
+  
+  /* Bigger gradient for smooth motion */
+  background-size: 400% 400%;
+  
+  /* Smooth and slow animation */
+  animation: gradientMove 20s ease infinite;
+  
+  /* Keep background fixed relative to viewport */
+  background-attachment: fixed;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

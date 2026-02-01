@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -46,3 +47,40 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </motion.div>
     );
 }
+=======
+"use client";
+
+import { Project } from "@/data/projects";
+
+type Props = {
+  project: Project;
+  onClick: () => void;
+};
+
+export default function ProjectCard({ project, onClick }: Props) {
+  return (
+    <div
+      onClick={onClick}
+      className="cursor-pointer overflow-hidden rounded-xl bg-[#0b1220] border border-white/10 hover:scale-[1.02] transition"
+    >
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-48 object-cover"
+      />
+
+      <div className="p-4">
+        <span className="text-xs text-blue-400">{project.type}</span>
+
+        <h3 className="text-lg font-semibold text-white mt-1">
+          {project.title}
+        </h3>
+
+        <p className="text-sm text-gray-400 mt-2 line-clamp-2">
+          {project.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+>>>>>>> ec561a8 (first commit)
