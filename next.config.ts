@@ -1,17 +1,16 @@
 import type { NextConfig } from "next";
 
-const repo = "rubenportfolio";
-
 const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true,
+  // Vercel does not need static export
+  // output: "export",
+  // trailingSlash: true,
 
-  // Required for GitHub Pages (Next/Image optimization needs a server)
-  images: { unoptimized: true },
+  // Optional (you can remove this too if you want Next Image optimization)
+  // images: { unoptimized: true },
 
-  // Only needed for project pages (NOT needed if repo is yvanruben.github.io)
-  basePath: `/${repo}`,
-  assetPrefix: `/${repo}/`,
+  // Remove GitHub Pages project settings
+  // basePath: `/${repo}`,
+  // assetPrefix: `/${repo}/`,
 };
 
 export default nextConfig;

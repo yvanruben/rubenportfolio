@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
@@ -15,7 +15,12 @@ export default function CampaignsSection() {
   );
 
   useEffect(() => {
-    document.body.style.overflow = activeProject ? "hidden" : "";
+    if (activeProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -26,7 +31,8 @@ export default function CampaignsSection() {
       <div className="mb-10 text-center">
         <h2 className="text-4xl font-bold text-white mb-5">Campaigns</h2>
         <p className="max-w-3xl mx-auto text-gray-400">
-         Digital campaigns focused on audience engagement, lead generation, and sales growth.
+          Digital campaigns focused on audience engagement, lead generation, and
+          sales growth.
         </p>
       </div>
 
@@ -46,7 +52,10 @@ export default function CampaignsSection() {
         </div>
       </motion.div>
 
-      <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      <ProjectModal
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </section>
   );
 }
