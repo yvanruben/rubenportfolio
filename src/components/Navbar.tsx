@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, type FormEvent, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Search } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,11 +14,6 @@ export default function Navbar() {
   // Mobile accordion
   const [isWorkMobileOpen, setIsWorkMobileOpen] = useState(false);
 
-  // Search
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const pathname = usePathname();
 
   const workRef = useRef<HTMLDivElement | null>(null);
@@ -47,12 +42,6 @@ export default function Navbar() {
     workCloseTimer.current = setTimeout(() => setIsWorkOpen(false), 140);
   };
 
-  // Sync search input with URL params (?q=...)
-  useEffect(() => {
-    const q = searchParams.get("q") ?? "";
-    setSearchTerm(q);
-  }, [searchParams]);
-
   // Close dropdown on outside click / ESC
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
@@ -72,14 +61,6 @@ export default function Navbar() {
       document.removeEventListener("keydown", onEsc);
     };
   }, []);
-
-  const handleSearch = (e: FormEvent) => {
-    e.preventDefault();
-    const trimmed = searchTerm.trim();
-    router.push(trimmed ? `/?q=${encodeURIComponent(trimmed)}` : "/");
-
-    if (isMenuOpen) setIsMenuOpen(false);
-  };
 
   return (
     <nav className="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
@@ -171,25 +152,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Desktop Search */}
-          <div className="hidden md:flex justify-end">
-            <form onSubmit={handleSearch} className="relative">
-              <input
-                type="text"
-                placeholder="Search case studies..."
-                className="bg-slate-800 text-gray-200 text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-72"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <button
-                type="submit"
-                className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"
-                aria-label="Search"
-              >
-                <Search size={16} />
-              </button>
-            </form>
-          </div>
+          {/* Right side (desktop) - keep spacing like before */}
+          <div className="hidden md:flex justify-end" />
 
           {/* Mobile Menu Button */}
           <div className="flex justify-end md:hidden">
@@ -277,26 +241,6 @@ export default function Navbar() {
             >
               Contact
             </Link>
-
-            {/* Mobile Search */}
-            <div className="mt-3 px-3">
-              <form onSubmit={handleSearch} className="relative">
-                <input
-                  type="text"
-                  placeholder="Search case studies..."
-                  className="bg-slate-900 text-white text-sm rounded-full pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"
-                  aria-label="Search"
-                >
-                  <Search size={16} />
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       )}
