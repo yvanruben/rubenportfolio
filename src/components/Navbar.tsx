@@ -75,7 +75,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:justify-end">
+          <div className="md:justify-end">
             <div className="flex items-baseline space-x-8">
               {baseLinks.map((item) => (
                 <Link
