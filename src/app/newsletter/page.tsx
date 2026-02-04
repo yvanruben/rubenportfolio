@@ -31,7 +31,7 @@ export default function NewsletterPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-20">
+          <div className="grid md:gap-6 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-20">
             {newsletterProjects.map((project) => (
               <ProjectCard
                 key={project.id}
