@@ -65,7 +65,8 @@ export default function Navbar() {
   return (
     <nav className="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-16 grid grid-cols-2 md:grid-cols-2 items-center">
+        {/* Left: logo | Right: nav (desktop) | Mobile: hamburger */}
+        <div className="h-16 flex items-center">
           {/* Logo */}
           <Link
             href="/"
@@ -74,9 +75,9 @@ export default function Navbar() {
             DevPortfolio
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="md:justify-end">
-            <div className="flex items-baseline space-x-8">
+          {/* Desktop Menu (RIGHT aligned) */}
+          <div className="hidden md:flex ml-auto items-center justify-end">
+            <div className="flex items-center space-x-8">
               {baseLinks.map((item) => (
                 <Link
                   key={item.href}
@@ -117,7 +118,7 @@ export default function Navbar() {
                   <div
                     onMouseEnter={openWork}
                     onMouseLeave={scheduleCloseWork}
-                    className="absolute left-0 mt-3 w-52 rounded-xl border border-slate-700 bg-slate-900 shadow-xl overflow-hidden"
+                    className="absolute right-0 mt-3 w-52 rounded-xl border border-slate-700 bg-slate-900 shadow-xl overflow-hidden"
                   >
                     {workLinks.map((item) => (
                       <Link
@@ -152,11 +153,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right side (desktop) - keep spacing like before */}
-          <div className="hidden md:flex justify-end" />
-
-          {/* Mobile Menu Button */}
-          <div className="flex justify-end md:hidden">
+          {/* Mobile Menu Button (RIGHT aligned) */}
+          <div className="ml-auto flex md:hidden items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-400 hover:text-white p-2"
