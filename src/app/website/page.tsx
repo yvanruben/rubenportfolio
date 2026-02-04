@@ -115,7 +115,7 @@ export default function WebsitePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid md:gap-6 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {websiteProjects.map((project) => (
           <WebsiteProjectCard
             key={project.id}
