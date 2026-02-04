@@ -65,7 +65,7 @@ export default function Navbar() {
   return (
     <nav className="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-16 grid grid-cols-2 md:grid-cols-2 items-center">
+        <div className="h-16 grid grid-cols-2 md:grid-cols-2 items-center pt-2">
           {/* Logo */}
           <Link
             href="/"
@@ -75,7 +75,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex justify-center">
+          <div className="hidden md:justify-end">
             <div className="flex items-baseline space-x-8">
               {baseLinks.map((item) => (
                 <Link
