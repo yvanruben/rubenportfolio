@@ -13,7 +13,7 @@ export default function ProjectCard({ project, onClick }: Props) {
     <button
       type="button"
       onClick={onClick}
-      className="text-left cursor-pointer overflow-hidden rounded-xl bg-[#0b1220] border border-white/10 hover:scale-[1.02] transition sm:pb-2"
+      className="text-left cursor-pointer overflow-hidden rounded-xl bg-[#0b1220] border border-white/10 hover:scale-[1.02] transition pb-2"
     >
       <div className="relative w-full h-48">
         <Image
